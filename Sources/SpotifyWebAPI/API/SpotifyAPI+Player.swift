@@ -150,6 +150,8 @@ public extension SpotifyAPI where
         
         query["limit"] = limit
         
+        print(query)
+        
         return self.getRequest(
             path: "/me/player/recently-played",
             queryItems: query,

@@ -122,5 +122,4 @@ public extension SpotifyAPI where
         .decodeSpotifyObject(PagingObject<Track>.self)
 
     }
-
 }
