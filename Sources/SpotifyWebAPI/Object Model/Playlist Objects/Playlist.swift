@@ -1,7 +1,7 @@
 import Foundation
 
 /// A Spotify playlist.
-public struct Playlist<Items: Codable & Hashable>: SpotifyURIConvertible, Hashable {
+public struct Playlist<Items: Codable & Hashable>: SpotifyURIConvertible, Hashable, Identifiable {
     
     /// The name of the playlist.
     public let name: String
@@ -78,6 +78,9 @@ public struct Playlist<Items: Codable & Hashable>: SpotifyURIConvertible, Hashab
     ///
     /// [1]: https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids
     public let id: String
+    
+    /// Swift generated unique ID to conform to Identifiable
+    public let uuid: UUID
     
     /// The [URI][1] for the playlist.
     ///
@@ -168,6 +171,7 @@ public struct Playlist<Items: Codable & Hashable>: SpotifyURIConvertible, Hashab
         self.followers = followers
         self.href = href
         self.id = id
+        self.uuid = UUID()
         self.uri = uri
         self.images = images
         self.type = .playlist
@@ -189,6 +193,7 @@ extension Playlist: Codable {
         case followers
         case href
         case id
+        case uuid
         case uri
         case images
         case type
