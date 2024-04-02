@@ -80,7 +80,9 @@ public struct Playlist<Items: Codable & Hashable>: SpotifyURIConvertible, Hashab
     public let id: String
     
     /// Swift generated unique ID to conform to Identifiable
-    public let uuid: UUID
+    public var uuid: UUID {
+        return UUID(uuidString: self.id) ?? UUID()
+    }
     
     /// The [URI][1] for the playlist.
     ///
@@ -171,7 +173,6 @@ public struct Playlist<Items: Codable & Hashable>: SpotifyURIConvertible, Hashab
         self.followers = followers
         self.href = href
         self.id = id
-        self.uuid = UUID()
         self.uri = uri
         self.images = images
         self.type = .playlist
@@ -193,7 +194,6 @@ extension Playlist: Codable {
         case followers
         case href
         case id
-        case uuid
         case uri
         case images
         case type
